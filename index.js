@@ -26,7 +26,10 @@ app.get('/', ( req, res ) => {
         ok: 'Hola mundo'
     });
 })
+
+// Conexion a la base de datos
 dbConnection();
+
 //Escuchar las peticiones
 app.listen( port, () => {
     console.log(`Servidor de Node.JS, corriendo por el puerto ${ port }`);
