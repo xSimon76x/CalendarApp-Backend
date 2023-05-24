@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 const { dbConnection } = require('./database/config');
 
@@ -7,6 +8,12 @@ const port = process.env.PORT || 5000;
 
 // Crear el servidor de express
 const app = express();
+
+// Conexion a la base de datos
+dbConnection();
+
+// Aplcicando CORS
+app.use(cors());
 
 // Directorio Público
 app.use( express.static('public') );
@@ -26,9 +33,6 @@ app.get('/', ( req, res ) => {
         ok: 'Hola mundo'
     });
 })
-
-// Conexion a la base de datos
-dbConnection();
 
 //Escuchar las peticiones
 app.listen( port, () => {
