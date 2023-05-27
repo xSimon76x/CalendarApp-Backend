@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const Usuario = require('./Usuario');
 
 const EventoSchema = Schema({
 
@@ -19,7 +20,7 @@ const EventoSchema = Schema({
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: Usuario,
         required: true
     }
 
@@ -29,6 +30,6 @@ EventoSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
-})
+});
 
 module.exports = model('Evento', EventoSchema);
